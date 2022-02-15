@@ -1,6 +1,7 @@
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
+const config = require("./config")
 
 const DBConecction = require("./database/DBConnection")
 const productRoutes = require("./routes/product.route")
@@ -34,9 +35,8 @@ async function starExpressServer(params) {
 
     await DBConecction()
 
-    const PORT = 4000
-    app.listen(PORT, ()=> {
-        console.log(`Server listo en http://localhost:${PORT}`)
+    app.listen(config.port, ()=> {
+        console.log(`Server listo en http://localhost:${config.port}`)
     })
 }
 
